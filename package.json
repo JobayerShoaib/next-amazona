@@ -12,9 +12,11 @@
     "@heroicons/react": "^2.0.13",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "js-cookie": "^3.0.1",
     "next": "13.0.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.39.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",

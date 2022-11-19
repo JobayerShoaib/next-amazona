@@ -5,7 +5,8 @@ import { Store } from "../utils/Store";
 import { XCircleIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { Router, useRouter } from "next/router";
-export default function CartScreen() {
+import dynamic from "next/dynamic";
+ function CartScreen() {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   const {
@@ -54,7 +55,7 @@ export default function CartScreen() {
                       </td>
                       <td className="p-5 text-right">
                         <select
-                          value={item.quantity}
+                          value={item.quantity }
                           onChange={(e) =>
                             updateCartHandler(item, e.target.value)
                           }
@@ -101,7 +102,7 @@ export default function CartScreen() {
               </li>
               <li>
                 <button
-                  onClick={() => router.push("/shipping")}
+                  onClick={() => router.push("login?redirect=/shipping")}
                   className="primary-button w-full"
                 >
                   Check Out
@@ -114,3 +115,4 @@ export default function CartScreen() {
     </Layout>
   );
 }
+export default dynamic(()=>Promise.resolve( CartScreen),{ssr:false});
