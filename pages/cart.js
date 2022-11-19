@@ -7,12 +7,16 @@ import Image from "next/image";
 import { Router, useRouter } from "next/router";
 export default function CartScreen() {
   const { state, dispatch } = useContext(Store);
-  const router=useRouter();
+  const router = useRouter();
   const {
     cart: { cartItems },
   } = state;
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
+  const updateCartHandler = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
   return (
     <Layout title="Shopping Cart">
@@ -48,7 +52,20 @@ export default function CartScreen() {
                         </Link>
                         &nbsp;{item.name}
                       </td>
-                      <td className="p-5 text-right">{item.quantity}</td>
+                      <td className="p-5 text-right">
+                        <select
+                          value={item.quantity}
+                          onChange={(e) =>
+                            updateCartHandler(item, e.target.value)
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
                       <td className="p-5 text-right">${item.price}</td>
                       <td className="p-5 text-center">
                         <button onClick={() => removeItemHandler(item)}>
@@ -83,7 +100,12 @@ export default function CartScreen() {
                 </div>
               </li>
               <li>
-                <button onClick={()=>router.push('/shipping')} className="primary-button w-full">Check Out</button>
+                <button
+                  onClick={() => router.push("/shipping")}
+                  className="primary-button w-full"
+                >
+                  Check Out
+                </button>
               </li>
             </ul>
           </div>
