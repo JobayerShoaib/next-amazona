@@ -88,8 +88,8 @@ export default function LoginScreen() {
           <button className="primary-button">Login</button>
         </div>
         <div className="mb-4">
-          Don&apos;t have an account? &nbsp;Register
-          <Link href={`register`}></Link>
+          Don&apos;t have an account?&nbsp;
+          <Link href={`register`}>Register</Link>
         </div>
       </form>
     </Layout>
