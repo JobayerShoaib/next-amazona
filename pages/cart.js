@@ -53,7 +53,7 @@ import dynamic from "next/dynamic";
                         </Link>
                         &nbsp;{item.name}
                       </td>
-                      <td className="p-5 text-right">
+                      <td className="px-5 text-right">
                         <select
                           value={item.quantity }
                           onChange={(e) =>
@@ -67,8 +67,8 @@ import dynamic from "next/dynamic";
                           ))}
                         </select>
                       </td>
-                      <td className="p-5 text-right">${item.price}</td>
-                      <td className="p-5 text-center">
+                      <td className="px-5 text-right">${item.price}</td>
+                      <td className="px-5 text-center">
                         <button onClick={() => removeItemHandler(item)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
