@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import CheckoutWizard from "../components/CheckoutWizard";
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
+import placeorder from "./placeorder";
 
 export default function PaymentScreen() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
@@ -67,3 +68,5 @@ export default function PaymentScreen() {
     </Layout>
   );
 }
+
+placeorder.Auth=true;
